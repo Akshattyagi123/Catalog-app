@@ -62,47 +62,45 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(
               height: 40.0,
             ),
-            InkWell(
-              onTap: () async {
-                setState(() {
-                  //To change the state
-                  changeButton = true;
-                }); //make button pushable
-                await Future.delayed(
-                    Duration(seconds: 1)); //makes process to wait for 1 sec
-                Navigator.pushNamed(
-                    context,
-                    MyRoutes
-                        .homeRoute); //to go from login page to homepage on pressing login button
-              },
-              child: AnimatedContainer(
-                //container is just an empty box
-                duration: Duration(
-                    seconds: 1), //amount of time for which animation will run
-                width: changeButton
-                    ? 50
-                    : 150, //conditional statement changes size of login button from 150 to 50 if condition true
-                height: 50,
-                alignment: Alignment.center,
-                child: changeButton
-                    ? Icon(
-                        Icons.done,
-                        color: Colors.white,
-                      )
-                    : Text(
-                        "Login",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18),
-                      ),
-                //Executes after animation
-                decoration: BoxDecoration(
-                    color: Colors.deepPurple,
-                    //shape: changeButton?BoxShape.circle:BoxShape.rectangle,
-                    borderRadius: BorderRadius.circular(changeButton
-                        ? 20
-                        : 8)), //box ka edge thik hoga(circular)
+            Material(
+              color: Colors.deepPurple,
+              borderRadius: BorderRadius.circular(changeButton ? 20 : 8),
+              child: InkWell(
+                splashColor: Colors.red,
+                onTap: () async {
+                  setState(() {
+                    //To change the state
+                    changeButton = true;
+                  }); //make button pushable
+                  await Future.delayed(
+                      Duration(seconds: 1)); //makes process to wait for 1 sec
+                  Navigator.pushNamed(
+                      context,
+                      MyRoutes
+                          .homeRoute); //to go from login page to homepage on pressing login button
+                },
+                child: AnimatedContainer(
+                  //container is just an empty box
+                  duration: Duration(
+                      seconds: 1), //amount of time for which animation will run
+                  width: changeButton
+                      ? 50
+                      : 150, //conditional statement changes size of login button from 150 to 50 if condition true
+                  height: 50,
+                  alignment: Alignment.center,
+                  child: changeButton
+                      ? Icon(
+                          Icons.done,
+                          color: Colors.white,
+                        )
+                      : Text(
+                          "Login",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18),
+                        ),
+                ),
               ),
             ),
           ],
