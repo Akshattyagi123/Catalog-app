@@ -16,10 +16,10 @@ class HomeDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      backgroundColor: Colors.transparent,
+      appBar: AppBar(backgroundColor: Colors.transparent),
+      backgroundColor: context.canvasColor,
       bottomNavigationBar: Container(
-        color: Colors.white,
+        color: context.cardColor,
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceBetween,
           buttonPadding: EdgeInsets.zero,
@@ -29,7 +29,7 @@ class HomeDetailPage extends StatelessWidget {
               onPressed: () {},
               style: ButtonStyle(
                   backgroundColor:
-                      MaterialStateProperty.all(MyTheme.darkBluishColor),
+                      MaterialStateProperty.all(context.theme.buttonColor),
                   shape: MaterialStateProperty.all(
                     StadiumBorder(),
                   )),
@@ -48,19 +48,24 @@ class HomeDetailPage extends StatelessWidget {
                 .h32(context),
             Expanded(
                 child: VxArc(
-              height: 10.0,
-              arcType: VxArcType.CONVEY,
+              height: 30.0,
+              arcType: VxArcType.CONVEY,//line not working properly
               child: Container(
-                color: Colors.white,
+                color: context.cardColor,
                 width: context.screenWidth,
                 child: Column(
                   children: [
                     catalog.name.text.xl4
-                        .color(MyTheme.darkBluishColor)
+                        .color(context.accentColor)
                         .bold
                         .make(),
                     catalog.desc.text.textStyle(context.captionStyle).xl.make(),
                     10.heightBox,
+                    "Dolor sea takimata ipsum sea eirmod akiquyam est. Eos ipsum voluptua eirmod elitr,no dolor dolor amet eirmod dolor labore dolores magna.Amet vero vero vero kasd,dolore sea sed sit invidunt nonumy est sit clita.Diam aliquyam amet tempor diam no aliquyam invidunt.Elitr lorem eirmod dolore clita.Rebum"
+                        .text
+                        .textStyle(context.captionStyle)
+                        .make()
+                        .p16()
                   ],
                 ).py64(),
               ),
